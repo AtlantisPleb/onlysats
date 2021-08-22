@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Navbar />
       <Header />
       <Component {...pageProps} />
-      <LCanvas />
+      {/* <LCanvas /> */}
     </>
   )
 }

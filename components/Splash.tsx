@@ -49,9 +49,9 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
-export const Authed = () => {
+export const Splash = () => {
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen bg-yellow-50'>
       <header>
         <Popover className='relative bg-white'>
           <div className='flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>

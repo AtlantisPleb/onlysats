@@ -28,7 +28,7 @@ const WalletPage = () => {
         <Button
           disabled={!wallet}
           onPress={generateInvoice}
-          title='Generate invoice (50 sats)'
+          title='Generate invoice (25 sats)'
         />
       )}
 

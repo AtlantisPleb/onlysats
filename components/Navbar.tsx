@@ -42,11 +42,11 @@ export const Navbar = () => {
                   </div>
                   <div className='hidden md:ml-10 md:flex md:space-x-8'>
                     {/* Current: "border-bitcoin text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                    <Link href='/' passHref>
+                    {/* <Link href='/' passHref>
                       <a className='border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'>
                         Feed
                       </a>
-                    </Link>
+                    </Link> */}
                     {/* <Link href='/wallet'>
                       <a className='border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'>
                         Wallet ({balance})

@@ -79,7 +79,7 @@ export class Wallet {
     }
 
     this.wallet.createInvoice(
-      { num_satoshis: 50, memo: 'Load OnlySats wallet' },
+      { num_satoshis: 25, memo: 'Load OnlySats wallet' },
       callback
     )
   }

@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { Button } from 'react-native'
 import type { NextPage } from 'next'
 import { useStore } from '@/helpers/store'
-import { Authed } from '@/components/Authed'
+import { Splash } from '@/components/Splash'
 
 const Home: NextPage = () => {
   const store = useStore()
   const [email, setEmail] = useState('chris@arcade.city')
   // const [isLoggingIn, setIsLoggingIn] = useState(false)
+
+  return <Splash />
 
   return store.magicUser?.email ? (
     <Authed />
