@@ -61,8 +61,11 @@ const Home: NextPage = () => {
       console.log('AUTHED?', authed)
       // setIsCeramicAuthed(authed)
       // console.log('Checking for wallet...')
-      const wallet: any = await ceramic.checkForWallet()
-      console.log('WALLET?', wallet)
+      const existingWallet: any = await ceramic.checkForWallet()
+      console.log('WALLET?', existingWallet)
+      if (!existingWallet) {
+        wallet.createWallet()
+      }
       // if (wallet) {
       // setLightningWallet({ ...wallet, fromCeramic: true })
       // LightningWallet = new LightningCustodianWallet({

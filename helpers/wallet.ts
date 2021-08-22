@@ -9,4 +9,13 @@ export class Wallet {
     this.client.Initialize(publicApiKey)
     console.log('Initialized LNPay client:', this.client)
   }
+
+  createWallet() {
+    this.client.createWallet(
+      { user_label: 'Test wallet' },
+      function (result: any) {
+        console.log(result)
+      }
+    )
+  }
 }
