@@ -13,13 +13,13 @@ export class Wallet {
     this.client.Initialize(publicApiKey)
     console.log('Initialized LNPay client:', this.client)
 
-    const walletAccessKey = process.env.NEXT_PUBLIC_WALLET_ACCESS_KEY
+    // const walletAccessKey = process.env.NEXT_PUBLIC_WALLET_ACCESS_KEY
     // @ts-ignore
-    let myWallet = new LNPayWallet(walletAccessKey)
-    this.wallet = myWallet
-    this.updateBalance()
+    // let myWallet = new LNPayWallet(walletAccessKey)
+    // this.wallet = myWallet
+    // this.updateBalance()
     // this.set({ wallet: myWallet })
-    console.log(myWallet)
+    // console.log(myWallet)
   }
 
   updateBalance() {
