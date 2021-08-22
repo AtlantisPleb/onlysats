@@ -2,8 +2,10 @@ const publicApiKey = 'pak_3v4d6iGupjB63jn7aVdRj4KGmWJU5O6v'
 
 export class Wallet {
   client: any
+  set: any
 
-  constructor() {
+  constructor(set: any) {
+    this.set = set
     // @ts-ignore
     this.client = typeof LNPay === 'undefined' ? null : LNPay
     if (!this.client) return
@@ -12,11 +14,11 @@ export class Wallet {
   }
 
   createWallet() {
-    this.client.createWallet(
-      { user_label: 'Test wallet' },
-      function (result: any) {
-        console.log(result)
-      }
-    )
+    const callback = (result: any) => {
+      this.set({ wallet: result })
+      console.log('SET:', result)
+    }
+
+    this.client.createWallet({ user_label: 'Test wallet' }, callback)
   }
 }

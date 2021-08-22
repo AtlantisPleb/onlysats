@@ -13,12 +13,15 @@ import { Wallet } from '@/helpers/wallet'
 const magic = m as Magic
 const provider = p as any
 const ceramic = new Ceramic()
-const wallet = new Wallet()
+// const wallet = new Wallet()
 
 const Home: NextPage = () => {
   const store = useStore()
   const [email, setEmail] = useState('chris@arcade.city')
   const [isLoggingIn, setIsLoggingIn] = useState(false)
+
+  const wallet = useStore((s) => s.wallet)
+  console.log('WALLET:', wallet)
 
   // Check if logged in
   useEffect(() => {
@@ -64,7 +67,8 @@ const Home: NextPage = () => {
       const existingWallet: any = await ceramic.checkForWallet()
       console.log('WALLET?', existingWallet)
       if (!existingWallet) {
-        wallet.createWallet()
+        store.lnpay.createWallet()
+        // wallet.createWallet()
       }
       // if (wallet) {
       // setLightningWallet({ ...wallet, fromCeramic: true })
