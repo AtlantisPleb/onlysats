@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { CONTAINER } from '@/components/Authed'
 // @ts-ignore
 import Player from '@vimeo/player'
-import { Timer } from './timer'
+import { Timer } from '@/components/timer'
 
 const creatorWallet = 'wal_cuudFH0X9bc8ka'
 
