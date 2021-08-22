@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { RecentPosts } from './RecentPosts'
+import { ViewStyle } from 'react-native'
 
 const solutions = [
   {
@@ -236,13 +237,13 @@ export const Splash = () => {
           {/* Hero card */}
           <div className='pt-4 relative bg-yellow-50'>
             <div className='absolute inset-x-0 bottom-0 h-1/2 bg-yellow-50' />
-            <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
+            <div className='max-w-7xl mx-auto pt-4 sm:px-6 lg:px-8'>
               <div className='relative shadow-xl sm:rounded-2xl sm:overflow-hidden'>
                 <div className='absolute inset-0'>
                   <img
                     className='h-full w-full object-cover'
                     src='/lady.jpg'
-                    alt='People working on laptops'
+                    alt='A nice lady'
                   />
                   <div className='absolute inset-0 bg-blue-400 mix-blend-multiply' />
                 </div>
@@ -277,7 +278,7 @@ export const Splash = () => {
                             type='submit'
                             className='block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
                           >
-                            Log in
+                            Get started
                           </button>
                         </div>
                       </div>

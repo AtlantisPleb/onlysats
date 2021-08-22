@@ -40,19 +40,6 @@ export const Navbar = () => {
                       </h1>
                     </Link>
                   </div>
-                  <div className='hidden md:ml-10 md:flex md:space-x-8'>
-                    {/* Current: "border-bitcoin text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                    {/* <Link href='/' passHref>
-                      <a className='border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'>
-                        Feed
-                      </a>
-                    </Link> */}
-                    {/* <Link href='/wallet'>
-                      <a className='border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'>
-                        Wallet ({balance})
-                      </a>
-                    </Link> */}
-                  </div>
                 </div>
                 <div className='flex items-center'>
                   <div className='flex-shrink-0'>
@@ -73,6 +60,9 @@ export const Navbar = () => {
                     <button
                       type='button'
                       className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                      onClick={() =>
+                        alert("Don't you wish you had notifications!")
+                      }
                     >
                       <span className='sr-only'>View notifications</span>
                       <BellIcon className='h-6 w-6' aria-hidden='true' />
@@ -192,6 +182,9 @@ export const Navbar = () => {
                   <button
                     type='button'
                     className='ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                    onClick={() =>
+                      alert("Don't you wish you had notifications!")
+                    }
                   >
                     <span className='sr-only'>View notifications</span>
                     <BellIcon className='h-6 w-6' aria-hidden='true' />
