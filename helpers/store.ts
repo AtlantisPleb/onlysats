@@ -1,5 +1,4 @@
 import { Magic, MagicUserMetadata } from 'magic-sdk'
-import { useCallback } from 'react'
 import create from 'zustand'
 import { Wallet } from './wallet'
 import { magic as m, provider as p } from '@/helpers/magic'
@@ -15,7 +14,7 @@ interface State {
   actions: any
 }
 
-export const useStore = create<State>((set) => ({
+export const useStore = create<State>((set, get) => ({
   magicUser: { issuer: null, publicAddress: null, email: null },
   setMagicUser: (magicUser: MagicUserMetadata | null) => set({ magicUser }),
   invoice: null,
@@ -28,7 +27,7 @@ export const useStore = create<State>((set) => ({
         email,
       })
       const user = await magic.user.getMetadata()
-      useStore().setMagicUser(user)
+      get().setMagicUser(user)
     },
     setWallet: (wallet: any) => {
       set({ wallet })

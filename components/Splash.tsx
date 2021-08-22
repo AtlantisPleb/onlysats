@@ -11,9 +11,25 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { RecentPosts } from './RecentPosts'
 import { ViewStyle } from 'react-native'
+import { useStore } from '@/helpers/store'
 
 export const Splash = () => {
   const [email, setEmail] = useState('')
+  const [loggingIn, setLoggingIn] = useState(false)
+  const actions = useStore((s) => s.actions)
+  const magicUser = useStore((s) => s.magicUser)
+  const login = async () => {
+    try {
+      if (email.length > 4) {
+        setLoggingIn(true)
+        console.log('Logging in w', email)
+        await actions.login(email)
+      }
+    } catch (e) {
+      setLoggingIn(false)
+      alert(e.message)
+    }
+  }
   return (
     <div className='min-h-screen bg-gray-50'>
       <header>
@@ -218,40 +234,44 @@ export const Splash = () => {
                   <p className='mt-6 max-w-lg mx-auto text-center text-xl text-yellow-200 sm:max-w-3xl'>
                     Monetize your audience with Bitcoin.
                   </p>
-                  {/* <p className='mt-6 max-w-lg mx-auto text-center text-xl text-yellow-200 sm:max-w-3xl'>
-                    Because unstoppable connection needs unstoppable money.
-                  </p> */}
 
-                  <div className='font-sans flex justify-center items-center mt-10 sm:mt-12'>
-                    <form action='#' className='sm:max-w-sm sm:mx-auto lg:mx-0'>
-                      <div className='sm:flex'>
-                        <div className='min-w-0 flex-1'>
-                          <label htmlFor='email' className='sr-only'>
-                            Email address
-                          </label>
-                          <input
-                            id='email'
-                            type='email'
-                            placeholder='Enter your email'
-                            className='block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
+                  {magicUser && (
+                    <h1 className='mt-6 text-center'>Welcome back!</h1>
+                  )}
+
+                  {!magicUser && (
+                    <div className='font-sans flex justify-center items-center mt-10 sm:mt-12'>
+                      <form className='sm:max-w-sm sm:mx-auto lg:mx-0'>
+                        <div className='sm:flex'>
+                          <div className='min-w-0 flex-1'>
+                            <label htmlFor='email' className='sr-only'>
+                              Email address
+                            </label>
+                            <input
+                              id='email'
+                              type='email'
+                              placeholder='Enter your email'
+                              className='block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
+                          </div>
+                          <div className='mt-3 sm:mt-0 sm:ml-3'>
+                            <button
+                              className='block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
+                              onClick={login}
+                              disabled={loggingIn}
+                            >
+                              Get started
+                            </button>
+                          </div>
                         </div>
-                        <div className='mt-3 sm:mt-0 sm:ml-3'>
-                          <button
-                            type='submit'
-                            className='block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
-                          >
-                            Get started
-                          </button>
-                        </div>
-                      </div>
-                      <p className='mt-3 text-center italic text-sm text-gray-300 sm:mt-4'>
-                        You&apos;ll be emailed a verification link.
-                      </p>
-                    </form>
-                  </div>
+                        <p className='mt-3 text-center italic text-sm text-gray-300 sm:mt-4'>
+                          You&apos;ll be emailed a verification link.
+                        </p>
+                      </form>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
