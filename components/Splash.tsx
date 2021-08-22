@@ -236,7 +236,9 @@ export const Splash = () => {
                   </p>
 
                   {magicUser && (
-                    <h1 className='mt-8 text-2xl text-center'>Welcome back!</h1>
+                    <h1 className='text-white italic mt-8 text-2xl text-center'>
+                      Welcome back!
+                    </h1>
                   )}
 
                   {!magicUser && (
