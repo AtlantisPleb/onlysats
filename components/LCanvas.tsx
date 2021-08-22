@@ -22,10 +22,11 @@ const LCanvas = () => {
           height: '100vh',
           zIndex: 0,
           pointerEvents: 'none',
-          // backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(0,0,0,0.5)',
         }}
       >
-        <Canvas shadows camera={{ position: [0, 25, 60], fov: 50 }}>
+        <img src='/lady.jpg' style={{ zIndex: -1 }} />
+        {/* <Canvas shadows camera={{ position: [0, 25, 60], fov: 50 }}>
           <fog attach='fog' args={['black', 0, 20]} />
           <a.pointLight position={[5, 13, 15]} intensity={props.intensity} />
           <Stars
@@ -35,7 +36,7 @@ const LCanvas = () => {
             factor={3}
             saturation={0}
           />
-        </Canvas>
+        </Canvas> */}
       </div>
     </>
   )

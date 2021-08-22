@@ -5,21 +5,20 @@ import { View } from 'react-native'
 import Player from '@vimeo/player'
 
 export const Authed = () => {
-  const [isPlaying, setIsPlaying] = useState(true)
-  useEffect(() => {
-    const player = new Player('handstick', {
-      id: 590491522,
-      width: 640,
-      height: 900,
-      controls: true,
-      title: false,
-      byline: false,
-      portrait: false,
-    })
-    player.on('play', function () {
-      console.log('played the video!')
-    })
-  }, [])
+  // useEffect(() => {
+  //   const player = new Player('handstick', {
+  //     id: 590491522,
+  //     width: 640,
+  //     height: 900,
+  //     controls: true,
+  //     title: false,
+  //     byline: false,
+  //     portrait: false,
+  //   })
+  //   player.on('play', function () {
+  //     console.log('played the video!')
+  //   })
+  // }, [])
   return (
     <View style={{ width: 640, height: 900, backgroundColor: 'transparent' }}>
       <div id='handstick' />
