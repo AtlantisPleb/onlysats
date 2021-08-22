@@ -10,6 +10,7 @@ function classNames(...classes: any) {
 
 export const Navbar = () => {
   const wallet = useStore((s) => s.wallet)
+  const magicUser = useStore((s) => s.magicUser)
   const actions = useStore((s) => s.actions)
   const balance = wallet?.balance ?? 0
   return (
@@ -42,98 +43,100 @@ export const Navbar = () => {
                     </Link>
                   </div>
                 </div>
-                <div className='flex items-center'>
-                  <div className='flex-shrink-0'>
-                    <Link href='/wallet'>
+                {magicUser && !!wallet && (
+                  <div className='flex items-center'>
+                    <div className='flex-shrink-0'>
+                      <Link href='/wallet'>
+                        <button
+                          type='button'
+                          className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-bitcoin shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        >
+                          <i
+                            aria-hidden
+                            className='fak fa-satoshisymbol-solidcirtilt -ml-1 mr-2'
+                          ></i>
+                          <span>{balance}</span>
+                        </button>
+                      </Link>
+                    </div>
+                    <div className='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
                       <button
                         type='button'
-                        className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-bitcoin shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        onClick={() => alert('You wish you had notifications!')}
                       >
-                        <i
-                          aria-hidden
-                          className='fak fa-satoshisymbol-solidcirtilt -ml-1 mr-2'
-                        ></i>
-                        <span>{balance}</span>
+                        <span className='sr-only'>View notifications</span>
+                        <BellIcon className='h-6 w-6' aria-hidden='true' />
                       </button>
-                    </Link>
-                  </div>
-                  <div className='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
-                    <button
-                      type='button'
-                      className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                      onClick={() => alert('You wish you had notifications!')}
-                    >
-                      <span className='sr-only'>View notifications</span>
-                      <BellIcon className='h-6 w-6' aria-hidden='true' />
-                    </button>
 
-                    {/* Profile dropdown */}
-                    <Menu as='div' className='ml-3 relative'>
-                      <div>
-                        <Menu.Button className='bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-                          <span className='sr-only'>Open user menu</span>
-                          <img
-                            className='h-8 w-8 rounded-full'
-                            src='/satoshi.png'
-                            alt=''
-                          />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        enter='transition ease-out duration-200'
-                        enterFrom='transform opacity-0 scale-95'
-                        enterTo='transform opacity-100 scale-100'
-                        leave='transition ease-in duration-75'
-                        leaveFrom='transform opacity-100 scale-100'
-                        leaveTo='transform opacity-0 scale-95'
-                      >
-                        <Menu.Items className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Your Profile
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                Settings
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href='#'
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                                onClick={actions.logout}
-                              >
-                                Log out
-                              </a>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
+                      {/* Profile dropdown */}
+                      <Menu as='div' className='ml-3 relative'>
+                        <div>
+                          <Menu.Button className='bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                            <span className='sr-only'>Open user menu</span>
+                            <img
+                              className='h-8 w-8 rounded-full'
+                              src='/satoshi.png'
+                              alt=''
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter='transition ease-out duration-200'
+                          enterFrom='transform opacity-0 scale-95'
+                          enterTo='transform opacity-100 scale-100'
+                          leave='transition ease-in duration-75'
+                          leaveFrom='transform opacity-100 scale-100'
+                          leaveTo='transform opacity-0 scale-95'
+                        >
+                          <Menu.Items className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href='#'
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  Your Profile
+                                </a>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href='#'
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  Settings
+                                </a>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href='#'
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  onClick={actions.logout}
+                                >
+                                  Log out
+                                </a>
+                              )}
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
 

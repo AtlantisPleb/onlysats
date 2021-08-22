@@ -3,9 +3,13 @@ import { Button, Text, TextStyle, View } from 'react-native'
 import { CONTAINER } from '@/components/Splash'
 import { useStore } from '@/helpers/store'
 import QRCode from 'react-qr-code'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const WalletPage = () => {
   const lnpay = useStore((s) => s.lnpay)
+  const magicUser = useStore((s) => s.magicUser)
+  const router = useRouter()
   const invoice = useStore((s) => s.invoice)
   const [invoiceToPay, setInvoiceToPay] = useState('')
   const wallet = useStore((s) => s.wallet)
@@ -19,6 +23,14 @@ const WalletPage = () => {
   const withdraw = () => {
     setShowWithdraw(true)
   }
+
+  useEffect(() => {
+    if (!magicUser) {
+      router.push('/')
+      alert('Log in with email to get your wallet!')
+    }
+  }, [magicUser])
+
   return (
     <View style={CONTAINER}>
       <p className='text-center text-xl leading-relaxed mb-4'>
