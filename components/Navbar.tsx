@@ -3,12 +3,15 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { PlusIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
+import { useStore } from '@/helpers/store'
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
 export const Navbar = () => {
+  const wallet = useStore((s) => s.wallet)
+  const balance = wallet?.balance ?? 0
   return (
     <div style={{ zIndex: 900, position: 'absolute', width: '100vw' }}>
       <Disclosure as='nav' className='font-sans bg-white shadow'>
@@ -45,25 +48,27 @@ export const Navbar = () => {
                         Feed
                       </a>
                     </Link>
-                    <Link href='/wallet'>
+                    {/* <Link href='/wallet'>
                       <a className='border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'>
-                        Wallet
+                        Wallet ({balance})
                       </a>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
                 <div className='flex items-center'>
                   <div className='flex-shrink-0'>
-                    <button
-                      type='button'
-                      className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-bitcoin shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                    >
-                      <PlusIcon
-                        className='-ml-1 mr-2 h-5 w-5'
-                        aria-hidden='true'
-                      />
-                      <span>New Post</span>
-                    </button>
+                    <Link href='/wallet'>
+                      <button
+                        type='button'
+                        className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-bitcoin shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                      >
+                        <PlusIcon
+                          className='-ml-1 mr-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                        <span>{balance}</span>
+                      </button>
+                    </Link>
                   </div>
                   <div className='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
                     <button
