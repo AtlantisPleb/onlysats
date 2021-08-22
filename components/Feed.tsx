@@ -31,8 +31,8 @@ export const Feed = () => {
                 <time dateTime='2021-08-01'>5 sats / minute - PG-13</time>
               </div>
               <p className='mt-4 text-base text-gray-900'>
-                You heard it here first. Metaverse. We're making one. Something
-                something VR. Bad memes added in post.
+                You heard it here first. Metaverse. We&apos;re making one.
+                Something something VR. Bad memes added in post.
               </p>
             </div>
           </div>
