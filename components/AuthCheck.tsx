@@ -49,6 +49,7 @@ export const AuthCheck = () => {
       if (!existingWallet) {
         store.lnpay.createWallet(ceramic)
       } else {
+        store.lnpay.setWallet(existingWallet)
         store.actions.setWallet(existingWallet)
       }
     }

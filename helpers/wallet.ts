@@ -22,6 +22,14 @@ export class Wallet {
     // console.log(myWallet)
   }
 
+  setWallet(wallet) {
+    console.log('setwallet with', wallet)
+    const key = wallet.access_keys['Wallet Admin'][0]
+    console.log('Got access key:', key)
+    const lnwallet = new LNPayWallet(key)
+    this.wallet = lnwallet
+  }
+
   updateBalance() {
     if (!this.wallet) return
     const callback = async (result: any) => {
