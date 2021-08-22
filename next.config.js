@@ -10,6 +10,7 @@ module.exports = withBundleAnalyzer({
   experimental: {
     externalDir: true,
     modern: true,
+    scriptLoader: true,
   },
 
   // https://stackoverflow.com/questions/68008498/nextjs-typeerror-unsupported-file-type-undefined-after-update-to-v-11

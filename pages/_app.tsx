@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import '../styles/Home.module.css'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import ScriptLoader from 'next/script'
 import { Header } from '../components/Header'
 import Head from 'next/head'
 
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <script src='https://unpkg.com/lnpay-js@^0.1/dist/lnpay.min.js'></script>
+        <script src='/lnpay.min.js'></script>
       </Head>
       <Header />
       <LCanvas />

@@ -5,7 +5,8 @@ export class Wallet {
 
   constructor() {
     // @ts-ignore
-    this.client = LNPay
+    this.client = typeof LNPay === 'undefined' ? null : LNPay
+    if (!this.client) return
     this.client.Initialize(publicApiKey)
     console.log('Initialized LNPay client:', this.client)
   }
