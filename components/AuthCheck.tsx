@@ -13,10 +13,12 @@ export const AuthCheck = () => {
   const store = useStore()
   const [savedUser, setSavedUser] = useStickyState({}, 'magicUser')
   useEffect(() => {
-    console.log("Let's init.")
-    console.log('SAVEDUSER:', savedUser)
+    console.log('Initializing...')
     if (!!savedUser) {
+      console.log('Restoring user from localStorage...')
       store.setMagicUser(savedUser)
+    } else {
+      console.log('No user found in localStorage')
     }
   }, [savedUser])
 
@@ -43,7 +45,7 @@ export const AuthCheck = () => {
       ceramic.setup()
       await ceramic.authenticate(thearray.slice(0, 32))
       const existingWallet: any = await ceramic.checkForWallet()
-      console.log('existingWallet?', existingWallet)
+      // console.log('existingWallet?', existingWallet)
       if (!existingWallet) {
         store.lnpay.createWallet(ceramic)
       } else {
@@ -60,7 +62,6 @@ function useStickyState(defaultValue: any, key: string) {
 
   useEffect(() => {
     const stickyValue = window.localStorage.getItem(key)
-    console.log('stickyValue:', stickyValue)
     if (stickyValue !== null) {
       setValue(JSON.parse(stickyValue))
     }
