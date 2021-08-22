@@ -34,16 +34,18 @@ const VideoPage = () => {
 
       <View
         style={{
+          paddingTop: 65,
           width: '100%',
+          maxWidth: 500,
           height: '100%',
-          backgroundColor: 'black',
+          backgroundColor: 'white',
         }}
       >
         <div id='handstick' />
-        <p className='text-white text-center italic text-xl leading-relaxed my-4'>
+        <p className='text-black text-center italic text-xl leading-relaxed my-4'>
           Chris and Kiki build a metaverse, eventually.
         </p>
-        <p className='text-white text-center italic text-xl leading-relaxed my-4'>
+        <p className='text-black text-center italic text-xl leading-relaxed my-4'>
           5 sats/minute
         </p>
       </View>
