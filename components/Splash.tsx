@@ -258,7 +258,7 @@ export const Splash = () => {
                     Because unstoppable connection needs unstoppable money.
                   </p> */}
 
-                  <div className='flex justify-center items-center mt-10 sm:mt-12'>
+                  <div className='font-sans flex justify-center items-center mt-10 sm:mt-12'>
                     <form action='#' className='sm:max-w-sm sm:mx-auto lg:mx-0'>
                       <div className='sm:flex'>
                         <div className='min-w-0 flex-1'>
@@ -281,8 +281,8 @@ export const Splash = () => {
                           </button>
                         </div>
                       </div>
-                      <p className='mt-3 text-center text-sm text-gray-300 sm:mt-4'>
-                        You'll be emailed a verification link to log in.
+                      <p className='mt-3 text-center italic text-sm text-gray-300 sm:mt-4'>
+                        You&apos;ll be emailed a verification link.
                       </p>
                     </form>
                   </div>
@@ -291,7 +291,6 @@ export const Splash = () => {
             </div>
           </div>
         </div>
-        {/* More main page content here... */}
         <RecentPosts />
       </main>
     </div>
