@@ -16,7 +16,7 @@ export class Wallet {
   }
 
   payInvoice(invoiceToPay: string) {
-    console.log('About to pay', invoiceToPay)
+    // console.log('About to pay', invoiceToPay)
     if (!this.wallet) return
     this.wallet.payInvoice(
       { payment_request: invoiceToPay },
@@ -29,7 +29,7 @@ export class Wallet {
 
   async chargeVideoView(amount: number, walletId: string) {
     if (!this.wallet) return
-    console.log('CHARGING ', amount, walletId)
+    // console.log('CHARGING ', amount, walletId)
 
     const params = {
       dest_wallet_id: walletId,
@@ -65,7 +65,7 @@ export class Wallet {
     const callback = async (result: any) => {
       this.set({ wallet: result })
       this.wallet = result
-      console.log('SET:', result)
+      // console.log('SET:', result)
       ceramic.uploadSecret(result)
     }
 
@@ -73,7 +73,7 @@ export class Wallet {
   }
 
   createInvoice() {
-    console.log('this.client is:', this.client)
+    // console.log('this.client is:', this.client)
     const callback = async (result: any) => {
       this.set({ invoice: result })
     }

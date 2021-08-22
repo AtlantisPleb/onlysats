@@ -15,7 +15,7 @@ export const Timer = ({ creatorWallet, isPlaying }: any) => {
     if (times > charged.length) {
       charged.push('demo charge')
       lnpay && lnpay.chargeVideoView(amount, creatorWallet)
-      console.log('Charged length is now:', charged.length)
+      // console.log('Charged length is now:', charged.length)
     }
   }
   const { elapsedTime } = useElapsedTime({ isPlaying, onUpdate })
