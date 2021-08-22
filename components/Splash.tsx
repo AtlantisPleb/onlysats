@@ -285,7 +285,7 @@ export const Splash = () => {
   )
 }
 
-export const CONTAINER: ViewStyle = {
+export const CONTAINER: any = {
   position: 'relative',
   flex: 1,
   // width: '100vw',
