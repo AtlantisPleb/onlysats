@@ -22,15 +22,14 @@ export const useStore = create<State>((set) => ({
   lnpay: new Wallet(set),
   wallet: null,
   actions: {
-    login: (email: string) =>
-      useCallback(async () => {
-        // setIsLoggingIn(true)
-        await magic.auth.loginWithMagicLink({
-          email,
-        })
-        const user = await magic.user.getMetadata()
-        useStore().setMagicUser(user)
-      }, [email]),
+    login: async (email: string) => {
+      // setIsLoggingIn(true)
+      await magic.auth.loginWithMagicLink({
+        email,
+      })
+      const user = await magic.user.getMetadata()
+      useStore().setMagicUser(user)
+    },
     setWallet: (wallet: any) => {
       set({ wallet })
     },

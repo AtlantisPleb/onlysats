@@ -22,7 +22,7 @@ const VideoPage = () => {
   return (
     <View style={CONTAINER}>
       <p className='text-center italic text-xl leading-relaxed'>
-        Chris and Kiki build a metaverse.
+        Chris and Kiki build a metaverse, eventually.
       </p>
       <View style={{ width: 640, height: 900, backgroundColor: 'transparent' }}>
         <div id='handstick' />
