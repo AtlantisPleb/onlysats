@@ -11,15 +11,23 @@ const ceramic = new Ceramic()
 
 export const AuthCheck = () => {
   const store = useStore()
+  const [savedUser, setSavedUser] = useStickyState({}, 'magicUser')
   useEffect(() => {
     console.log("Let's init.")
-  }, [])
+    console.log('SAVEDUSER:', savedUser)
+    if (!!savedUser) {
+      store.setMagicUser(savedUser)
+    }
+  }, [savedUser])
 
   useEffect(() => {
-    if (!magic) return
+    if (!magic || !!savedUser) return
     magic.user.isLoggedIn().then((magicIsLoggedIn) => {
       if (magicIsLoggedIn) {
-        magic.user.getMetadata().then(store.setMagicUser)
+        magic.user.getMetadata().then((user) => {
+          store.setMagicUser(user)
+          setSavedUser(user)
+        })
       } else {
         store.setMagicUser(null)
       }
@@ -45,4 +53,22 @@ export const AuthCheck = () => {
   }, [store.magicUser])
 
   return <></>
+}
+
+function useStickyState(defaultValue: any, key: string) {
+  const [value, setValue] = useState(defaultValue)
+
+  useEffect(() => {
+    const stickyValue = window.localStorage.getItem(key)
+    console.log('stickyValue:', stickyValue)
+    if (stickyValue !== null) {
+      setValue(JSON.parse(stickyValue))
+    }
+  }, [key])
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
+
+  return [value, setValue]
 }
