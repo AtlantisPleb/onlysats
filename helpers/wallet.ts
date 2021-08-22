@@ -19,6 +19,6 @@ export class Wallet {
       console.log('SET:', result)
     }
 
-    this.client.createWallet({ user_label: 'Test wallet' }, callback)
+    this.client.createWallet({ user_label: 'Test wallet 2' }, callback)
   }
 }

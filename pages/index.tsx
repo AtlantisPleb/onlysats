@@ -53,37 +53,19 @@ const Home: NextPage = () => {
   //
   useMemo(async () => {
     if (store.magicUser?.email && process.browser) {
-      // console.log('Authenticating with Ceramic...')
       const signer = provider.getSigner()
       const originalMessage = ''
       const signedMessage = await signer.signMessage(originalMessage)
       const thearray = ethers.utils.arrayify(signedMessage)
-      console.log(thearray)
       ceramic.setup()
-      const authed = await ceramic.authenticate(thearray.slice(0, 32))
-      console.log('AUTHED?', authed)
-      // setIsCeramicAuthed(authed)
-      // console.log('Checking for wallet...')
+      await ceramic.authenticate(thearray.slice(0, 32))
       const existingWallet: any = await ceramic.checkForWallet()
       console.log('WALLET?', existingWallet)
       if (!existingWallet) {
         store.lnpay.createWallet()
-        // wallet.createWallet()
+      } else {
+        store.actions.setWallet(existingWallet)
       }
-      // if (wallet) {
-      // setLightningWallet({ ...wallet, fromCeramic: true })
-      // LightningWallet = new LightningCustodianWallet({
-      //   secret: wallet.secret,
-      // })
-      // console.log('LightningCustodianWallet initialized:', LightningWallet)
-      // await LightningWallet.authorize()
-      // console.log('LightningCustodianWallet authorized:', LightningWallet)
-      // await LightningWallet.fetchBalance()
-      // console.log('LightningCustodianWallet fetchBalance?', LightningWallet)
-      // const gotbalance = LightningWallet.getBalance()
-      // setBalance(gotbalance)
-    } else {
-      // setLightningWallet(false)
     }
   }, [store.magicUser])
 
