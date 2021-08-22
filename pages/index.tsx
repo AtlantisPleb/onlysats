@@ -1,18 +1,22 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button } from 'react-native'
 import type { NextPage } from 'next'
 import { Magic } from 'magic-sdk'
-import { magic as m } from '@/helpers/magic'
+import { magic as m, provider as p } from '@/helpers/magic'
 import { useStore } from '@/helpers/store'
-import { Navbar } from '../components/Navbar'
+import { ethers } from 'ethers'
+import { Authed } from '@/components/Authed'
+import { Navbar } from '@/components/Navbar'
 
 const magic = m as Magic
+const provider = p as any
 
 const Home: NextPage = () => {
   const store = useStore()
   const [email, setEmail] = useState('chris@arcade.city')
   const [isLoggingIn, setIsLoggingIn] = useState(false)
 
+  // Check if logged in
   useEffect(() => {
     if (!magic) return
     magic.user.isLoggedIn().then((magicIsLoggedIn) => {
@@ -24,6 +28,7 @@ const Home: NextPage = () => {
     })
   }, [magic])
 
+  // Log in
   const login = useCallback(async () => {
     setIsLoggingIn(true)
 
@@ -38,9 +43,40 @@ const Home: NextPage = () => {
     }
   }, [email])
 
-  console.log(store.magicUser)
+  //
+  useMemo(async () => {
+    if (store.magicUser) {
+      // console.log('Authenticating with Ceramic...')
+      const signer = provider.getSigner()
+      const originalMessage = ''
+      const signedMessage = await signer.signMessage(originalMessage)
+      const thearray = ethers.utils.arrayify(signedMessage)
+      console.log(thearray)
+      // ceramic.setup()
+      // const authed = await ceramic.authenticate(thearray.slice(0, 32))
+      // setIsCeramicAuthed(authed)
+      // console.log('Checking for wallet...')
+      // const wallet: any = await ceramic.checkForWallet()
+      // if (wallet) {
+      // setLightningWallet({ ...wallet, fromCeramic: true })
+      // LightningWallet = new LightningCustodianWallet({
+      //   secret: wallet.secret,
+      // })
+      // console.log('LightningCustodianWallet initialized:', LightningWallet)
+      // await LightningWallet.authorize()
+      // console.log('LightningCustodianWallet authorized:', LightningWallet)
+      // await LightningWallet.fetchBalance()
+      // console.log('LightningCustodianWallet fetchBalance?', LightningWallet)
+      // const gotbalance = LightningWallet.getBalance()
+      // setBalance(gotbalance)
+    } else {
+      // setLightningWallet(false)
+    }
+  }, [store.magicUser])
 
-  return (
+  return store.magicUser?.email ? (
+    <Authed />
+  ) : (
     <div className='container2'>
       <Navbar />
       <main className='main'>
