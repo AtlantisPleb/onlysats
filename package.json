@@ -44,6 +44,7 @@
     "text-encoding-polyfill": "0.6.7",
     "three": "^0.131.3",
     "tinytime": "^0.2.6",
+    "use-elapsed-time": "^3.0.1",
     "zustand": "^3.5.9"
   },
   "devDependencies": {

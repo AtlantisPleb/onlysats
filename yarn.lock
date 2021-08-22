@@ -9496,6 +9496,11 @@ use-asset@^1.0.4:
   dependencies:
     fast-deep-equal "^3.1.3"
 
+use-elapsed-time@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/use-elapsed-time/-/use-elapsed-time-3.0.1.tgz#43e562d711a1779580bb7548e14619c4dcfacfa1"
+  integrity sha512-Z83sKnBukVIgKYQFP1xgXgL5m9OPAkJ3bw2U9ghdemsdR3Z1Ju0Mco7SPVbgcNIJ2VJgZB/nurFouDOCC4P7Ag==
+
 use-subscription@1.5.1, use-subscription@^1.0.0:
   version "1.5.1"
   resolved "https://registry.npmjs.org/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"
