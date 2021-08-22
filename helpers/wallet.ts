@@ -13,9 +13,10 @@ export class Wallet {
     console.log('Initialized LNPay client:', this.client)
   }
 
-  createWallet() {
-    const callback = (result: any) => {
+  createWallet(ceramic: any) {
+    const callback = async (result: any) => {
       this.set({ wallet: result })
+      await ceramic.uploadSecret(result)
       console.log('SET:', result)
     }
 

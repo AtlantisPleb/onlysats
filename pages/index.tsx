@@ -62,7 +62,7 @@ const Home: NextPage = () => {
       const existingWallet: any = await ceramic.checkForWallet()
       console.log('WALLET?', existingWallet)
       if (!existingWallet) {
-        store.lnpay.createWallet()
+        store.lnpay.createWallet(ceramic)
       } else {
         store.actions.setWallet(existingWallet)
       }
