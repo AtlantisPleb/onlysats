@@ -1,5 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
   AnnotationIcon,
@@ -13,51 +12,15 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import { RecentPosts } from './RecentPosts'
 import { ViewStyle } from 'react-native'
 
-const solutions = [
-  {
-    name: 'Inbox',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: InboxIcon,
-  },
-  {
-    name: 'Messaging',
-    description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
-    icon: AnnotationIcon,
-  },
-  {
-    name: 'Live Chat',
-    description: "Your customers' data will be safe and secure.",
-    href: '#',
-    icon: ChatAlt2Icon,
-  },
-  {
-    name: 'Knowledge Base',
-    description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: QuestionMarkCircleIcon,
-  },
-]
-const navigation = [
-  { name: 'Pricing', href: '#' },
-  { name: 'Partners', href: '#' },
-  { name: 'Company', href: '#' },
-]
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export const Splash = () => {
+  const [email, setEmail] = useState('')
   return (
-    <div className='min-h-screen bg-yellow-50'>
+    <div className='min-h-screen bg-gray-50'>
       <header>
         <Popover className='relative bg-white'>
           <div className='flex justify-between items-center max-w-7xl mx-auto px-4 pt-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>
             <div className='-mr-2 -my-2 md:hidden'>
-              <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500'>
+              <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
                 <span className='sr-only'>Open menu</span>
                 <MenuIcon className='h-6 w-6' aria-hidden='true' />
               </Popover.Button>
@@ -69,7 +32,7 @@ export const Splash = () => {
                     <Popover.Button
                       className={classNames(
                         open ? 'text-gray-900' : 'text-gray-500',
-                        'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
+                        'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
                       )}
                     >
                       <span>Solutions</span>
@@ -174,7 +137,7 @@ export const Splash = () => {
                       />
                     </div>
                     <div className='-mr-2'>
-                      <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500'>
+                      <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
                         <span className='sr-only'>Close menu</span>
                         <XIcon className='h-6 w-6' aria-hidden='true' />
                       </Popover.Button>
@@ -235,8 +198,8 @@ export const Splash = () => {
       <main>
         <div>
           {/* Hero card */}
-          <div className='pt-4 relative bg-yellow-50'>
-            <div className='absolute inset-x-0 bottom-0 h-1/2 bg-yellow-50' />
+          <div className='pt-4 relative bg-gray-50'>
+            <div className='absolute inset-x-0 bottom-0 h-1/2 bg-gray-50' />
             <div className='max-w-7xl mx-auto pt-4 sm:px-6 lg:px-8'>
               <div className='relative shadow-xl sm:rounded-2xl sm:overflow-hidden'>
                 <div className='absolute inset-0'>
@@ -271,6 +234,8 @@ export const Splash = () => {
                             type='email'
                             placeholder='Enter your email'
                             className='block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className='mt-3 sm:mt-0 sm:ml-3'>
@@ -307,4 +272,41 @@ export const CONTAINER: ViewStyle = {
   backgroundColor: 'rgba(0,0,0,0.7)',
   justifyContent: 'center',
   alignItems: 'center',
+}
+
+const solutions = [
+  {
+    name: 'Inbox',
+    description:
+      'Get a better understanding of where your traffic is coming from.',
+    href: '#',
+    icon: InboxIcon,
+  },
+  {
+    name: 'Messaging',
+    description: 'Speak directly to your customers in a more meaningful way.',
+    href: '#',
+    icon: AnnotationIcon,
+  },
+  {
+    name: 'Live Chat',
+    description: "Your customers' data will be safe and secure.",
+    href: '#',
+    icon: ChatAlt2Icon,
+  },
+  {
+    name: 'Knowledge Base',
+    description: "Connect with third-party tools that you're already using.",
+    href: '#',
+    icon: QuestionMarkCircleIcon,
+  },
+]
+const navigation = [
+  { name: 'Pricing', href: '#' },
+  { name: 'Partners', href: '#' },
+  { name: 'Company', href: '#' },
+]
+
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(' ')
 }
