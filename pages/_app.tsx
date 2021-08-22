@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <script src='/lnpay.min.js'></script>
+        <script async src='/lnpay.min.js'></script>
       </Head>
       <Header />
       <LCanvas />
