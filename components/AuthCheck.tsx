@@ -11,9 +11,12 @@ const ceramic = new Ceramic()
 
 export const AuthCheck = () => {
   const store = useStore()
-  const [savedUser, setSavedUser] = useStickyState({}, 'magicUser')
+  const [savedUser, setSavedUser] = useStickyState(null, 'magicUser')
   useEffect(() => {
     console.log('Initializing...')
+    if (savedUser === {}) {
+      setSavedUser(null)
+    }
     if (!!savedUser) {
       console.log('Restoring user from localStorage...', savedUser)
       store.setMagicUser(savedUser)
@@ -34,7 +37,7 @@ export const AuthCheck = () => {
         store.setMagicUser(null)
       }
     })
-  }, [magic])
+  }, [magic, savedUser])
 
   useMemo(async () => {
     if (store.magicUser?.email && process.browser) {
