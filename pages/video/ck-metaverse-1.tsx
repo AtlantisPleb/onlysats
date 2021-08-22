@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { CONTAINER } from '@/components/Authed'
+import { CONTAINER } from '@/components/Splash'
 // @ts-ignore
 import Player from '@vimeo/player'
 import { Timer } from '@/components/timer'
