@@ -190,6 +190,7 @@ a {
 }
 
 .header {
+  z-index: 800;
   position: absolute;
   top: 4em;
   left: 0;

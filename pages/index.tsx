@@ -73,7 +73,6 @@ const Home: NextPage = () => {
     <Authed />
   ) : (
     <div className='container2'>
-      <Navbar />
       <main className='main'>
         OnlySats
         <Button onPress={login} title='Login' />

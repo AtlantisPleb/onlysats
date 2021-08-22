@@ -24,6 +24,7 @@ module.exports = {
         amber: '#ffa76c',
         arwes: '#7efcf6',
         arwes2: '#acf9fb',
+        bitcoin: '#f2a900',
         bluebell: '#9D98CB',
         electricindigo: '#5B20F2',
         electricviolet: '#AE30FF',

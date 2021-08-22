@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Stars } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a } from '@react-spring/three'
+import { Navbar } from './Navbar'
 
 const LCanvas = () => {
   const router = useRouter()
@@ -22,7 +23,6 @@ const LCanvas = () => {
           height: '100vh',
           zIndex: 0,
           pointerEvents: 'none',
-          backgroundColor: 'rgba(0,0,0,0.5)',
         }}
       >
         <img src='/lady.jpg' style={{ zIndex: 1 }} />

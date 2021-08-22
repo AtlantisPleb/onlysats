@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import ScriptLoader from 'next/script'
 import { Header } from '../components/Header'
 import Head from 'next/head'
+import { Navbar } from '@/components/Navbar'
 
 let LCanvas: any = null
 if (process.env.NODE_ENV === 'production') {
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <script async src='/lnpay.min.js'></script>
       </Head>
+      <Navbar />
       <Header />
       <Component {...pageProps} />
       <LCanvas />
