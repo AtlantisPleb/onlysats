@@ -61,7 +61,10 @@ export const Navbar = () => {
                         type='button'
                         className='relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-bitcoin shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                       >
-                        <i className='fak fa-satoshisymbol-solidcirtilt -ml-1 mr-2'></i>
+                        <i
+                          aria-hidden
+                          className='fak fa-satoshisymbol-solidcirtilt -ml-1 mr-2'
+                        ></i>
                         <span>{balance}</span>
                       </button>
                     </Link>
