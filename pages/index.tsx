@@ -8,10 +8,12 @@ import { ethers } from 'ethers'
 import { Authed } from '@/components/Authed'
 import { Navbar } from '@/components/Navbar'
 import { Ceramic } from '@/helpers/ceramic'
+import { Wallet } from '@/helpers/wallet'
 
 const magic = m as Magic
 const provider = p as any
 const ceramic = new Ceramic()
+const wallet = new Wallet()
 
 const Home: NextPage = () => {
   const store = useStore()

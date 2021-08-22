@@ -3,6 +3,7 @@ import '../styles/Home.module.css'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import { Header } from '../components/Header'
+import Head from 'next/head'
 
 let LCanvas: any = null
 if (process.env.NODE_ENV === 'production') {
@@ -16,6 +17,9 @@ if (process.env.NODE_ENV === 'production') {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        <script src='https://unpkg.com/lnpay-js@^0.1/dist/lnpay.min.js'></script>
+      </Head>
       <Header />
       <LCanvas />
       <Component {...pageProps} />
