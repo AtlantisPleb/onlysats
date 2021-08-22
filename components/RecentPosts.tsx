@@ -63,10 +63,10 @@ export const RecentPosts = () => {
     <div className='relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8'>
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center'>
-          <h2 className='text-3xl tracking-tight font-extrabold text-yellow-900 sm:text-4xl'>
+          <h2 className='text-3xl tracking-tight font-extrabold text-black sm:text-4xl'>
             Featured posts
           </h2>
-          <p className='mt-3 max-w-2xl mx-auto text-xl text-bitcoin sm:mt-4'>
+          <p className='mt-3 max-w-2xl mx-auto text-xl text-bitcoin sm:mt-4 text-yellow-900'>
             Get a taste of OnlySats!
           </p>
         </div>
