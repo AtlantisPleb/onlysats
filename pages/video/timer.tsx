@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useStore } from '@/helpers/store'
 import { useElapsedTime } from 'use-elapsed-time'
 
-const amount = 1 // sats to charge every interval
-const interval = 6 // interval in seconds
+const amount = 5 // sats to charge every interval
+const interval = 60 // interval in seconds
 const charged: any = []
 
 export const Timer = ({ creatorWallet, isPlaying }: any) => {
