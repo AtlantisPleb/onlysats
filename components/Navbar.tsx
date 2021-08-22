@@ -85,7 +85,7 @@ export const Navbar = () => {
                           <span className='sr-only'>Open user menu</span>
                           <img
                             className='h-8 w-8 rounded-full'
-                            src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+                            src='/satoshi.png'
                             alt=''
                           />
                         </Menu.Button>
@@ -180,16 +180,13 @@ export const Navbar = () => {
                   <div className='flex-shrink-0'>
                     <img
                       className='h-10 w-10 rounded-full'
-                      src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+                      src='/satoshi.png'
                       alt=''
                     />
                   </div>
                   <div className='ml-3'>
                     <div className='text-base font-medium text-gray-800'>
-                      satoshi1
-                    </div>
-                    <div className='text-sm font-medium text-gray-500'>
-                      joe@blow.com
+                      real_satoshi
                     </div>
                   </div>
                   <button

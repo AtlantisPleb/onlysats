@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, Text, TextStyle, View } from 'react-native'
-import { CONTAINER } from '@/components/Authed'
+import { CONTAINER } from '@/components/Splash'
 import { useStore } from '@/helpers/store'
 import QRCode from 'react-qr-code'
 

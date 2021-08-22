@@ -234,7 +234,7 @@ export const Splash = () => {
       <main>
         <div>
           {/* Hero card */}
-          <div className='relative bg-yellow-50'>
+          <div className='pt-4 relative bg-yellow-50'>
             <div className='absolute inset-x-0 bottom-0 h-1/2 bg-yellow-50' />
             <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
               <div className='relative shadow-xl sm:rounded-2xl sm:overflow-hidden'>
@@ -295,4 +295,15 @@ export const Splash = () => {
       </main>
     </div>
   )
+}
+
+export const CONTAINER: ViewStyle = {
+  position: 'absolute',
+  flex: 1,
+  width: '100vw',
+  height: '100vh',
+  zIndex: 3,
+  backgroundColor: 'rgba(0,0,0,0.7)',
+  justifyContent: 'center',
+  alignItems: 'center',
 }
