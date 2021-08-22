@@ -24,6 +24,7 @@
     "prismjs": "^1.23.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-native": "0.64.2",
     "react-native-web": "^0.13.14",
     "tailwindcss": "^2.2.0-canary.16",
     "three": "^0.131.3",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.8",
     "@types/react": "17.0.18",
+    "@types/react-native": "0.64.10",
     "@types/three": "^0.131.0",
     "babel-plugin-glsl": "^1.0.0",
     "babel-plugin-module-resolver": "^4.1.0",
