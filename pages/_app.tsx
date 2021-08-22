@@ -21,6 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <script async src='/lnpay.min.js'></script>
+        <script
+          async
+          src='https://kit.fontawesome.com/090ca49637.js'
+          crossOrigin='anonymous'
+        ></script>
       </Head>
       <Navbar />
       <Header />
