@@ -15,7 +15,7 @@ export const AuthCheck = () => {
   useEffect(() => {
     console.log('Initializing...')
     if (!!savedUser) {
-      console.log('Restoring user from localStorage...')
+      console.log('Restoring user from localStorage...', savedUser)
       store.setMagicUser(savedUser)
     } else {
       console.log('No user found in localStorage')
