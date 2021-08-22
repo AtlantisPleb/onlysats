@@ -32,7 +32,7 @@ export const Feed = () => {
               </div>
               <p className='mt-4 text-base text-gray-900'>
                 You heard it here first. Metaverse. We&apos;re making one.
-                Something something VR. Bad memes added in post.
+                Something something VR. Bad memes added in post. Plz subscribe.
               </p>
             </div>
           </div>
