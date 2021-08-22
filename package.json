@@ -29,7 +29,8 @@
     "react-native-web": "^0.13.14",
     "tailwindcss": "^2.2.0-canary.16",
     "three": "^0.131.3",
-    "tinytime": "^0.2.6"
+    "tinytime": "^0.2.6",
+    "zustand": "^3.5.9"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.8",
