@@ -9,7 +9,7 @@ export const Navbar = () => {
     <div className='header'>
       <span className='active'>
         <a
-          href='https://github.com/ArcadeCity/arcade'
+          href='https://github.com/ArcadeCity/onlysats'
           target='_blank'
           rel='noreferrer'
           className='link'
@@ -17,13 +17,6 @@ export const Navbar = () => {
           COMING SOON
         </a>
       </span>
-      {/* <span className={location === '/' ? 'active' : ''}>
-        <Link href='/'>WELCOME</Link>
-      </span>
-
-      <span className={location === '/blog' ? 'active' : ''}>
-        <Link href='/blog'>BLOG</Link>
-      </span> */}
     </div>
   )
 }
