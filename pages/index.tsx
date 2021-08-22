@@ -7,9 +7,11 @@ import { useStore } from '@/helpers/store'
 import { ethers } from 'ethers'
 import { Authed } from '@/components/Authed'
 import { Navbar } from '@/components/Navbar'
+import { Ceramic } from '@/helpers/ceramic'
 
 const magic = m as Magic
 const provider = p as any
+const ceramic = new Ceramic()
 
 const Home: NextPage = () => {
   const store = useStore()
@@ -45,15 +47,16 @@ const Home: NextPage = () => {
 
   //
   useMemo(async () => {
-    if (store.magicUser) {
+    if (store.magicUser?.email && process.browser) {
       // console.log('Authenticating with Ceramic...')
       const signer = provider.getSigner()
       const originalMessage = ''
       const signedMessage = await signer.signMessage(originalMessage)
       const thearray = ethers.utils.arrayify(signedMessage)
       console.log(thearray)
-      // ceramic.setup()
-      // const authed = await ceramic.authenticate(thearray.slice(0, 32))
+      ceramic.setup()
+      const authed = await ceramic.authenticate(thearray.slice(0, 32))
+      console.log('AUTHED?', authed)
       // setIsCeramicAuthed(authed)
       // console.log('Checking for wallet...')
       // const wallet: any = await ceramic.checkForWallet()

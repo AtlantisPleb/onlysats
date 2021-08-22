@@ -1,33 +1,48 @@
-import 'text-encoding-polyfill'
 import CeramicClient from '@ceramicnetwork/http-client'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
-// import { IDX } from '@ceramicstudio/idx'
-import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver'
-import ThreeIdProvider from './threeid-provider'
 import { DID } from 'dids'
-// import { LightningWallet } from 'stores/wallet-store'
-// import { display } from 'lib'
+import { Ed25519Provider } from 'key-did-provider-ed25519'
+import KeyDidResolver from 'key-did-resolver'
+import { IDX } from '@ceramicstudio/idx'
 
+// const API_URL = 'http://localhost:7007'
 const API_URL = 'https://ceramic-clay.3boxlabs.com'
-const getPermission = async (request: any) => {
-  return request.payload.paths
+const aliases = {
+  lightning1: 'kjzl6cwe1jw149aape5q3th7m68g03ykpskw8za94sd5qoh9bdsqfjy888z68jz',
 }
+const KEY = aliases.lightning1
 
 export class Ceramic {
   client: any
+  idx: any
 
   constructor() {
     this.client = null
+    this.idx = null
   }
 
   async setup() {
     this.client = new CeramicClient(API_URL)
+    this.idx = new IDX({ ceramic: this.client, aliases })
     return true
   }
 
   async checkForWallet() {
-    // const existing = await this.downloadSecret()
-    // console.log('EXISTING:', existing)
+    const existing = await this.downloadSecret()
+    console.log('Existing wallet:', existing)
+    return existing
+  }
+
+  async uploadSecret(payload: any) {
+    const jwe = await this.client.did?.createDagJWE(payload, [
+      this.client.did.id,
+    ])
+    await this.idx.set(KEY, jwe)
+  }
+
+  async downloadSecret() {
+    const jwe = await this.idx.get(KEY)
+    return jwe ? await this.client.did?.decryptDagJWE(jwe) : null
   }
 
   async loadDoc(streamId: string) {
@@ -43,52 +58,43 @@ export class Ceramic {
         186, 42, 218, 155, 229, 175, 39, 16, 11, 50, 229, 114, 35, 130, 48, 63,
         165, 33, 183, 18, 45, 29, 81, 131, 65, 171, 43, 5, 58, 31, 246, 31,
       ])
-    const authId = 'TestMethod'
-    console.log('authSecret:', authSecret)
-    const threeId = await ThreeIdProvider.create({
-      ceramic,
-      getPermission,
-      authSecret,
-      authId,
-    })
-    const provider = threeId.getDidProvider()
-    const resolver = ThreeIdResolver.getResolver(ceramic)
+    const provider = new Ed25519Provider(authSecret)
+    const resolver = KeyDidResolver.getResolver()
     const did = new DID({ provider, resolver })
     ceramic.did = did
     await ceramic.did.authenticate()
-    console.log({
-      name: 'Ceramic authenticate',
-      preview: `Authenticated: ${ceramic.did.authenticated.toString()} - ${
+    console.log(
+      `Ceramic authenticated: ${ceramic.did.authenticated.toString()} - ${
         ceramic.did.id
-      }`,
-    })
+      }`
+    )
     return ceramic.did.authenticated
   }
 
   // Encrypt the wallet's secret and persist to Ceramic
   async saveWallet(wallet: any) {
-    console.log({
-      name: 'Ceramic saveWallet',
-      preview: `Saving wallet ${wallet.label}`,
-      value: wallet,
-    })
-
     const walletToSave = {
-      baseUri: wallet.baseUri,
+      balance: wallet.balance,
+      baseUri: wallet.baseURI,
       chain: wallet.label,
-      createdAt: wallet.createdAt,
+      // createdAt: wallet.createdAt,
       secret: wallet.secret,
     }
 
-    const doc = await TileDocument.create(this.client, { wallet: walletToSave })
-    const streamId = doc.id.toString()
+    console.log('walletToSave:', walletToSave)
 
-    console.log({
-      name: 'Ceramic saveWallet',
-      preview: `Saved wallet with streamId: ${streamId}`,
-      value: wallet,
-    })
+    await this.uploadSecret(walletToSave)
+    console.log('WORKED?')
 
-    return streamId
+    // const doc = await TileDocument.create(this.client, { wallet: walletToSave })
+    // const streamId = doc.id.toString()
+
+    // console.log({
+    //   name: 'Ceramic saveWallet',
+    //   preview: `Saved wallet with streamId: ${streamId}`,
+    //   value: wallet,
+    // })
+
+    // return streamId
   }
 }
