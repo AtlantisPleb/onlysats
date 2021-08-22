@@ -5,6 +5,8 @@ import { CONTAINER } from '@/components/Authed'
 import Player from '@vimeo/player'
 import { Timer } from './timer'
 
+const creatorWallet = 'wal_cuudFH0X9bc8ka'
+
 const VideoPage = () => {
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -27,7 +29,7 @@ const VideoPage = () => {
   }, [])
   return (
     <View style={CONTAINER}>
-      <Timer isPlaying={isPlaying} />
+      <Timer isPlaying={isPlaying} creatorWallet={creatorWallet} />
       <p className='text-center italic text-xl leading-relaxed'>
         Chris and Kiki build a metaverse, eventually.
       </p>

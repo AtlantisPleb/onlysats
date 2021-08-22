@@ -1,5 +1,6 @@
 const publicApiKey = 'pak_3v4d6iGupjB63jn7aVdRj4KGmWJU5O6v'
 
+// TODO: this actually exports as lnpay, need to unconfuse this
 export class Wallet {
   client: any
   set: any
@@ -12,6 +13,23 @@ export class Wallet {
     if (!this.client) return
     this.client.Initialize(publicApiKey)
     console.log('Initialized LNPay client:', this.client)
+  }
+
+  async chargeVideoView(amount: number, walletId: string) {
+    if (!this.wallet) return
+    console.log('CHARGING ', amount, walletId)
+
+    const params = {
+      dest_wallet_id: walletId,
+      num_satoshis: amount,
+      memo: 'Watchin ur vid on OnlySats',
+    }
+    this.wallet.internalTransfer(params, function (result: any) {
+      console.log(result)
+    })
+
+    await sleep(1000)
+    this.updateBalance()
   }
 
   setWallet(wallet: any) {
@@ -53,4 +71,8 @@ export class Wallet {
       callback
     )
   }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
