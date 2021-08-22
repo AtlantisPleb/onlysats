@@ -32,5 +32,15 @@ export const useStore = create<State>((set, get) => ({
     setWallet: (wallet: any) => {
       set({ wallet })
     },
+    logout: () => {
+      set({
+        magicUser: { issuer: null, publicAddress: null, email: null },
+        invoice: null,
+        wallet: null,
+        lnpay: new Wallet(set),
+      })
+      window.localStorage.removeItem('magicUser')
+      magic.user.logout()
+    },
   },
 }))

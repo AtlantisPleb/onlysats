@@ -10,6 +10,7 @@ function classNames(...classes: any) {
 
 export const Navbar = () => {
   const wallet = useStore((s) => s.wallet)
+  const actions = useStore((s) => s.actions)
   const balance = wallet?.balance ?? 0
   return (
     <div style={{ zIndex: 900, position: 'absolute', width: '100vw' }}>
@@ -35,8 +36,8 @@ export const Navbar = () => {
                   </div>
                   <div className='flex-shrink-0 flex items-center'>
                     <Link href='/' passHref>
-                      <h1 className='font-serif text-black text-2xl cursor-pointer'>
-                        OnlySats
+                      <h1 className='font-sans text-black text-2xl cursor-pointer'>
+                        Only<span className='text-bitcoin font-bold'>Sats</span>
                       </h1>
                     </Link>
                   </div>
@@ -60,9 +61,7 @@ export const Navbar = () => {
                     <button
                       type='button'
                       className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                      onClick={() =>
-                        alert("Don't you wish you had notifications!")
-                      }
+                      onClick={() => alert('You wish you had notifications!')}
                     >
                       <span className='sr-only'>View notifications</span>
                       <BellIcon className='h-6 w-6' aria-hidden='true' />
@@ -124,8 +123,9 @@ export const Navbar = () => {
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-sm text-gray-700'
                                 )}
+                                onClick={actions.logout}
                               >
-                                Sign out
+                                Log out
                               </a>
                             )}
                           </Menu.Item>
@@ -182,9 +182,7 @@ export const Navbar = () => {
                   <button
                     type='button'
                     className='ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                    onClick={() =>
-                      alert("Don't you wish you had notifications!")
-                    }
+                    onClick={() => alert('You wish you had notifications!')}
                   >
                     <span className='sr-only'>View notifications</span>
                     <BellIcon className='h-6 w-6' aria-hidden='true' />
@@ -206,8 +204,9 @@ export const Navbar = () => {
                   <a
                     href='#'
                     className='block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 sm:px-6'
+                    onClick={actions.logout}
                   >
-                    Sign out
+                    Log out
                   </a>
                 </div>
               </div>

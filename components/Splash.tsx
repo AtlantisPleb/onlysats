@@ -236,7 +236,7 @@ export const Splash = () => {
                   </p>
 
                   {magicUser && (
-                    <h1 className='mt-6 text-center'>Welcome back!</h1>
+                    <h1 className='mt-8 text-2xl text-center'>Welcome back!</h1>
                   )}
 
                   {!magicUser && (
@@ -289,7 +289,8 @@ export const CONTAINER: ViewStyle = {
   width: '100vw',
   height: '100vh',
   zIndex: 3,
-  backgroundColor: 'rgba(0,0,0,0.7)',
+  backgroundColor: 'white',
+  color: 'black',
   justifyContent: 'center',
   alignItems: 'center',
 }
