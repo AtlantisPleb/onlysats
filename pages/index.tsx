@@ -11,16 +11,16 @@ const Home: NextPage = () => {
 
   return <Splash />
 
-  return store.magicUser?.email ? (
-    <Authed />
-  ) : (
-    <div className='container2'>
-      <main className='main'>
-        OnlySats
-        <Button onPress={() => store.actions.login(email)} title='Login' />
-      </main>
-    </div>
-  )
+  // return store.magicUser?.email ? (
+  //   <Authed />
+  // ) : (
+  //   <div className='container2'>
+  //     <main className='main'>
+  //       OnlySats
+  //       <Button onPress={() => store.actions.login(email)} title='Login' />
+  //     </main>
+  //   </div>
+  // )
 }
 
 export default Home

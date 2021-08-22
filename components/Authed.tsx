@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { RecentPosts } from './RecentPosts'
+import { ViewStyle } from 'react-native'
 
 const solutions = [
   {
@@ -293,4 +294,15 @@ export const Authed = () => {
       </main>
     </div>
   )
+}
+
+export const CONTAINER: ViewStyle = {
+  position: 'absolute',
+  flex: 1,
+  width: '100vw',
+  height: '100vh',
+  zIndex: 3,
+  backgroundColor: 'rgba(0,0,0,0.7)',
+  justifyContent: 'center',
+  alignItems: 'center',
 }

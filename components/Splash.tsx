@@ -54,17 +54,7 @@ export const Splash = () => {
     <div className='min-h-screen bg-yellow-50'>
       <header>
         <Popover className='relative bg-white'>
-          <div className='flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>
-            <div className='flex justify-start lg:w-0 lg:flex-1'>
-              <a href='#'>
-                <span className='sr-only'>Workflow</span>
-                <img
-                  className='h-8 w-auto sm:h-10'
-                  src='https://tailwindui.com/img/logos/workflow-mark-yellow-600.svg'
-                  alt=''
-                />
-              </a>
-            </div>
+          <div className='flex justify-between items-center max-w-7xl mx-auto px-4 pt-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8'>
             <div className='-mr-2 -my-2 md:hidden'>
               <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500'>
                 <span className='sr-only'>Open menu</span>
@@ -244,8 +234,8 @@ export const Splash = () => {
       <main>
         <div>
           {/* Hero card */}
-          <div className='relative'>
-            <div className='absolute inset-x-0 bottom-0 h-1/2 bg-gray-100' />
+          <div className='relative bg-yellow-50'>
+            <div className='absolute inset-x-0 bottom-0 h-1/2 bg-yellow-50' />
             <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
               <div className='relative shadow-xl sm:rounded-2xl sm:overflow-hidden'>
                 <div className='absolute inset-0'>

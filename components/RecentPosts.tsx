@@ -1,4 +1,4 @@
-import { Feed } from './Feed copy'
+import { Feed } from './Feed'
 
 /* This example requires Tailwind CSS v2.0+ */
 const posts = [
