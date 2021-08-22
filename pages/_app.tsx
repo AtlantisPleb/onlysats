@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <script async src='/lnpay.min.js'></script>
       </Head>
       <Header />
-      <LCanvas />
       <Component {...pageProps} />
+      <LCanvas />
     </>
   )
 }
