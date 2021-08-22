@@ -13,7 +13,9 @@ const WalletPage = () => {
   const generateInvoice = () => {
     lnpay.createInvoice()
   }
-  const payInvoice = () => {}
+  const payInvoice = () => {
+    lnpay.payInvoice(invoiceToPay)
+  }
   const withdraw = () => {
     setShowWithdraw(true)
   }

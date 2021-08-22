@@ -15,6 +15,18 @@ export class Wallet {
     console.log('Initialized LNPay client:', this.client)
   }
 
+  payInvoice(invoiceToPay: string) {
+    console.log('About to pay', invoiceToPay)
+    if (!this.wallet) return
+    this.wallet.payInvoice(
+      { payment_request: invoiceToPay },
+      function (result: any) {
+        console.log(result)
+        alert(JSON.stringify(result))
+      }
+    )
+  }
+
   async chargeVideoView(amount: number, walletId: string) {
     if (!this.wallet) return
     console.log('CHARGING ', amount, walletId)
