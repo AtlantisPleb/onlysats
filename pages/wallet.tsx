@@ -1,4 +1,4 @@
-import { Button, Text, View } from 'react-native'
+import { Button, Text, TextStyle, View } from 'react-native'
 import { CONTAINER } from '@/components/Authed'
 import { useStore } from '@/helpers/store'
 
@@ -20,21 +20,15 @@ const WalletPage = () => {
 
       {invoice && (
         <View style={{ maxWidth: 500 }}>
-          <Text style={{ flex: 1, flexWrap: 'wrap', marginTop: 20 }}>
-            Invoice object: {JSON.stringify(invoice)}
-          </Text>
+          <Text style={TEXT}>Invoice object: {JSON.stringify(invoice)}</Text>
 
-          <Text style={{ flex: 1, flexWrap: 'wrap', marginTop: 10 }}>
+          <Text style={TEXT}>
             Invoice payment_request: {invoice.payment_request}
           </Text>
 
-          <Text style={{ flex: 1, flexWrap: 'wrap', marginTop: 10 }}>
-            Amount (sats): {invoice.num_satoshis}
-          </Text>
+          <Text style={TEXT}>Amount (sats): {invoice.num_satoshis}</Text>
 
-          <Text style={{ flex: 1, flexWrap: 'wrap', marginTop: 10 }}>
-            Memo: {invoice.memo}
-          </Text>
+          <Text style={TEXT}>Memo: {invoice.memo}</Text>
         </View>
       )}
 
@@ -46,3 +40,10 @@ const WalletPage = () => {
 }
 
 export default WalletPage
+
+const TEXT: TextStyle = {
+  flex: 1,
+  flexWrap: 'wrap',
+  marginTop: 20,
+  color: 'white',
+}

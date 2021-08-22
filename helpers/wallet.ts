@@ -12,22 +12,14 @@ export class Wallet {
     if (!this.client) return
     this.client.Initialize(publicApiKey)
     console.log('Initialized LNPay client:', this.client)
-
-    // const walletAccessKey = process.env.NEXT_PUBLIC_WALLET_ACCESS_KEY
-    // @ts-ignore
-    // let myWallet = new LNPayWallet(walletAccessKey)
-    // this.wallet = myWallet
-    // this.updateBalance()
-    // this.set({ wallet: myWallet })
-    // console.log(myWallet)
   }
 
-  setWallet(wallet) {
-    console.log('setwallet with', wallet)
+  setWallet(wallet: any) {
     const key = wallet.access_keys['Wallet Admin'][0]
-    console.log('Got access key:', key)
+    // @ts-ignore
     const lnwallet = new LNPayWallet(key)
     this.wallet = lnwallet
+    this.updateBalance()
   }
 
   updateBalance() {
