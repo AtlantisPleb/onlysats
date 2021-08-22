@@ -13,7 +13,7 @@ export const Navbar = () => {
   const actions = useStore((s) => s.actions)
   const balance = wallet?.balance ?? 0
   return (
-    <div style={{ zIndex: 900, position: 'absolute', width: '100vw' }}>
+    <div style={{ zIndex: 900, position: 'absolute', width: '100%' }}>
       <Disclosure as='nav' className='font-sans bg-white shadow'>
         {({ open }) => (
           <>

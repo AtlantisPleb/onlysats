@@ -21,17 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Navbar />
       <Header />
       <Component {...pageProps} />
-      {/* <LCanvas /> */}
     </>
   )
 }
 export default MyApp
-
-let LCanvas: any = null
-if (process.env.NODE_ENV === 'production') {
-  LCanvas = dynamic(() => import('../components/LCanvas'), {
-    ssr: false,
-  })
-} else {
-  LCanvas = require('../components/LCanvas').default
-}

@@ -13,12 +13,13 @@ const VideoPage = () => {
   useEffect(() => {
     const player = new Player('handstick', {
       id: 590491522,
-      width: 640,
-      height: 900,
+      // width: 375,
+      // height: 700,
       controls: true,
       title: false,
       byline: false,
       portrait: false,
+      responsive: true,
     })
     player.on('play', function () {
       setIsPlaying(true)
@@ -30,11 +31,21 @@ const VideoPage = () => {
   return (
     <View style={CONTAINER}>
       <Timer isPlaying={isPlaying} creatorWallet={creatorWallet} />
-      <p className='text-center italic text-xl leading-relaxed'>
-        Chris and Kiki build a metaverse, eventually.
-      </p>
-      <View style={{ width: 640, height: 900, backgroundColor: 'transparent' }}>
+
+      <View
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'black',
+        }}
+      >
         <div id='handstick' />
+        <p className='text-white text-center italic text-xl leading-relaxed my-4'>
+          Chris and Kiki build a metaverse, eventually.
+        </p>
+        <p className='text-white text-center italic text-xl leading-relaxed my-4'>
+          5 sats/minute
+        </p>
       </View>
     </View>
   )

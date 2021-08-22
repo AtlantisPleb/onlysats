@@ -84,5 +84,5 @@ const TEXT: TextStyle = {
   flex: 1,
   flexWrap: 'wrap',
   marginTop: 20,
-  color: 'white',
+  color: 'black',
 }

@@ -284,9 +284,9 @@ export const Splash = () => {
 }
 
 export const CONTAINER: ViewStyle = {
-  position: 'absolute',
+  position: 'relative',
   flex: 1,
-  width: '100vw',
+  // width: '100vw',
   height: '100vh',
   zIndex: 3,
   backgroundColor: 'white',
