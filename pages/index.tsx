@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from 'react-native'
-import { magic as m } from '@/components/magic'
-import { Magic } from 'magic-sdk'
 import type { NextPage } from 'next'
+import { Magic } from 'magic-sdk'
+import { magic as m } from '@/helpers/magic'
 import { Navbar } from '../components/Navbar'
 
 const magic = m as Magic
@@ -23,10 +23,6 @@ const Home: NextPage = () => {
     })
   }, [magic])
 
-  /**
-   * Perform login action via Magic's passwordless flow. Upon successuful
-   * completion of the login flow, a user is redirected to the homepage.
-   */
   const login = useCallback(async () => {
     setIsLoggingIn(true)
 
