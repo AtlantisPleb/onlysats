@@ -1,10 +1,12 @@
 import { Button, Text, TextStyle, View } from 'react-native'
 import { CONTAINER } from '@/components/Authed'
 import { useStore } from '@/helpers/store'
+import QRCode from 'react-qr-code'
 
 const WalletPage = () => {
   const lnpay = useStore((s) => s.lnpay)
   const invoice = useStore((s) => s.invoice)
+  const wallet = useStore((s) => s.wallet)
   const generateInvoice = () => {
     lnpay.createInvoice()
   }
@@ -15,20 +17,28 @@ const WalletPage = () => {
         Load your wallet!
       </p>
       {!invoice && (
-        <Button onPress={generateInvoice} title='Generate invoice' />
+        <Button
+          disabled={!wallet}
+          onPress={generateInvoice}
+          title='Generate invoice (50 sats)'
+        />
       )}
 
       {invoice && (
-        <View style={{ maxWidth: 500 }}>
-          <Text style={TEXT}>Invoice object: {JSON.stringify(invoice)}</Text>
+        <View
+          style={{
+            maxWidth: 500,
+          }}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <QRCode value={invoice.payment_request} />
+          </View>
 
-          <Text style={TEXT}>
-            Invoice payment_request: {invoice.payment_request}
+          <Text style={TEXT}>{invoice.payment_request}</Text>
+
+          <Text style={{ ...TEXT, textAlign: 'center' }}>
+            Pay the invoice then refresh the page!
           </Text>
-
-          <Text style={TEXT}>Amount (sats): {invoice.num_satoshis}</Text>
-
-          <Text style={TEXT}>Memo: {invoice.memo}</Text>
         </View>
       )}
 
