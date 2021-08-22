@@ -257,21 +257,34 @@ export const Splash = () => {
                   {/* <p className='mt-6 max-w-lg mx-auto text-center text-xl text-yellow-200 sm:max-w-3xl'>
                     Because unstoppable connection needs unstoppable money.
                   </p> */}
-                  <div className='mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center'>
-                    <div className='space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5'>
-                      <a
-                        href='#'
-                        className='flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-yellow-700 bg-white hover:bg-yellow-50 sm:px-8'
-                      >
-                        Get started
-                      </a>
-                      <a
-                        href='#'
-                        className='flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-bitcoin hover:bg-opacity-70 sm:px-8'
-                      >
-                        Live demo
-                      </a>
-                    </div>
+
+                  <div className='flex justify-center items-center mt-10 sm:mt-12'>
+                    <form action='#' className='sm:max-w-sm sm:mx-auto lg:mx-0'>
+                      <div className='sm:flex'>
+                        <div className='min-w-0 flex-1'>
+                          <label htmlFor='email' className='sr-only'>
+                            Email address
+                          </label>
+                          <input
+                            id='email'
+                            type='email'
+                            placeholder='Enter your email'
+                            className='block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
+                          />
+                        </div>
+                        <div className='mt-3 sm:mt-0 sm:ml-3'>
+                          <button
+                            type='submit'
+                            className='block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900'
+                          >
+                            Log in
+                          </button>
+                        </div>
+                      </div>
+                      <p className='mt-3 text-center text-sm text-gray-300 sm:mt-4'>
+                        You'll be emailed a verification link to log in.
+                      </p>
+                    </form>
                   </div>
                 </div>
               </div>
